@@ -1,0 +1,28 @@
+{
+  "name": "manezinho-api",
+  "version": "1.0.0",
+  "description": "An API for manezinho related data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azedo/manezinho-api.git"
+  },
+  "keywords": [
+    "manezinho",
+    "florianopolis",
+    "sc"
+  ],
+  "author": "Eduardo Grigolo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/azedo/manezinho-api/issues"
+  },
+  "homepage": "https://github.com/azedo/manezinho-api#readme",
+  "dependencies": {
+    "apollo-server": "^2.10.1",
+    "graphql": "^14.6.0"
+  }
+}
