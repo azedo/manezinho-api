@@ -6,24 +6,40 @@ const typeDefs = gql`
     id: ID!
     word: String!
     meaning: String!
-    author: String!
+    username: String!
+  }
+
+  input WordInput {
+    word: String!
+    meaning: String!
+    username: String!
   }
 
   type Query {
     words(initial: String): [Word]
     meanings: [String]
   }
+
+  type Mutation {
+    addWord(word: WordInput!): Word
+    updateWord(id: ID!, word: WordInput!): Word
+  }
 `
 
 const resolvers = {
   Query: {
-    words: (_parent, args) => {
-      return args.initial
-        ? words.filter(({ word }) => word.charAt(0) == args.initial)
+    words: (_, { initial }) => {
+      return initial
+        ? words.filter(({ word }) => word.charAt(0) == initial)
         : words
     },
     meanings: () => {
       return words.map(({ meaning }) => meaning)
+    },
+  },
+  Mutation: {
+    addWord: async (_, { word }) => {
+      console.log({ word })
     },
   },
 }
