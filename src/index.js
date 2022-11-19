@@ -10,22 +10,20 @@ const typeDefs = gql`
   }
 
   type Query {
-    words: [Word]
+    words(initial: String): [Word]
     meanings: [String]
-    wordsByInitial(initial: String!): [Word]!
   }
 `
 
 const resolvers = {
   Query: {
-    words: () => {
-      return words
+    words: (_parent, args) => {
+      return args.initial
+        ? words.filter(({ word }) => word.charAt(0) == args.initial)
+        : words
     },
     meanings: () => {
       return words.map(({ meaning }) => meaning)
-    },
-    wordsByInitial: (_parent, args) => {
-      return words.filter(({ word }) => word.charAt(0) == args.initial)
     },
   },
 }
