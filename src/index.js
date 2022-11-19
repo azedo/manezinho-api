@@ -24,8 +24,8 @@ const resolvers = {
     meanings: () => {
       return words.map(({ meaning }) => meaning)
     },
-    wordsByInitial: (initial) => {
-      return words.filter(({ word }) => word.charAt(0) == initial)
+    wordsByInitial: (_parent, args) => {
+      return words.filter(({ word }) => word.charAt(0) == args.initial)
     },
   },
 }
