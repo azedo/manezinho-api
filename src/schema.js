@@ -21,6 +21,6 @@ export default gql`
 
   type Mutation {
     addWord(word: WordInput!): Word
-    updateWord(id: ID!, word: WordInput!): Word
+    updateWord(id: ID!, meaning: String!): Word
   }
 `

@@ -1,7 +1,11 @@
-import words from '../data/words.json' assert { type: 'json' }
+import wordsData from '../data/words.json' assert { type: 'json' }
 import { DataSource } from 'apollo-datasource'
 import { v4 as uuid } from 'uuid'
 
+let words = wordsData.map((word) => ({
+  ...word,
+  id: word.id.toString(),
+}))
 export class WordsAPI extends DataSource {
   constructor() {
     super()
@@ -22,20 +26,15 @@ export class WordsAPI extends DataSource {
     return newWord
   }
 
-  updateWord(id, updatedWord) {
+  updateWord(id, newMeaning) {
     words = words.map((word) =>
       id === word.id
         ? {
             ...word,
-            ...updatedWord,
+            meaning: newMeaning,
           }
         : word
     )
-    const newWord = {
-      id,
-      ...updatedWord,
-    }
-    console.log({ newWord })
-    return newWord
+    return words.filter(({ id: wordId }) => id === wordId)[0]
   }
 }
