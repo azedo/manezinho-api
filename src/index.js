@@ -1,5 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server')
-const words = require('../data.json')
+const WordsAPI = require('./datasources/words')
 
 const typeDefs = gql`
   type Word {
@@ -28,12 +28,14 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    words: (_, { initial }) => {
+    words: (_, { initial }, { dataSources }) => {
+      const words = dataSources.wordsAPI.getWords()
       return initial
         ? words.filter(({ word }) => word.charAt(0) == initial)
         : words
     },
-    meanings: () => {
+    meanings: (_context, _args, { dataSources }) => {
+      const words = dataSources.wordsAPI.getWords()
       return words.map(({ meaning }) => meaning)
     },
   },
@@ -44,9 +46,14 @@ const resolvers = {
   },
 }
 
+const dataSources = () => ({
+  wordsAPI: new WordsAPI(),
+})
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  dataSources,
   introspection: true,
   playground: true,
 })
