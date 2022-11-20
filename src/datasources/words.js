@@ -9,7 +9,6 @@ class WordsAPI extends DataSource {
   initialize(config) {}
 
   getWords() {
-    console.log({ words })
     return words
   }
 }
