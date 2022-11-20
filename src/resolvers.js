@@ -12,8 +12,8 @@ module.exports = {
     },
   },
   Mutation: {
-    addWord: async (_, { word }) => {
-      console.log({ word })
+    addWord: async (_, { word }, { dataSources }) => {
+      return dataSources.wordsAPI.addWord(word)
     },
   },
 }
