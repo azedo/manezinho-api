@@ -27,6 +27,10 @@ export class WordsAPI extends DataSource {
   }
 
   updateWord(id, newMeaning) {
+    if (words.filter(({ word: wordId }) => id === wordId).length === 0) {
+      return new Error(`Could not find word with id ${id}`)
+    }
+
     words = words.map((word) =>
       id === word.id
         ? {
