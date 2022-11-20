@@ -1,8 +1,8 @@
-let words = require('../data/words.json')
-const { DataSource } = require('apollo-datasource')
-const { v4: uuid } = require('uuid')
+import words from '../data/words.json' assert { type: 'json' }
+import { DataSource } from 'apollo-datasource'
+import { v4 as uuid } from 'uuid'
 
-class WordsAPI extends DataSource {
+export class WordsAPI extends DataSource {
   constructor() {
     super()
   }
@@ -36,5 +36,3 @@ class WordsAPI extends DataSource {
     return newWord
   }
 }
-
-module.exports = WordsAPI

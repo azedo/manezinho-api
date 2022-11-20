@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "An API for manezinho related data",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon src/index.js",
     "build": "rm -rf public && mkdir public && cp index.js public/index.js",

@@ -1,7 +1,7 @@
-const { ApolloServer, gql } = require('apollo-server')
-const WordsAPI = require('./datasources/words')
-const typeDefs = require('./schema')
-const resolvers = require('./resolvers')
+import { ApolloServer } from 'apollo-server'
+import { WordsAPI } from './datasources/words.js'
+import typeDefs from './schema.js'
+import resolvers from './resolvers.js'
 
 const dataSources = () => ({
   wordsAPI: new WordsAPI(),

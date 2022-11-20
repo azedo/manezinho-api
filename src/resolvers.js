@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   Query: {
     words: (_, { initial }, { dataSources }) => {
       const words = dataSources.wordsAPI.getWords()
