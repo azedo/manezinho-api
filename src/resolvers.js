@@ -15,5 +15,8 @@ module.exports = {
     addWord: async (_, { word }, { dataSources }) => {
       return dataSources.wordsAPI.addWord(word)
     },
+    updateWord: async (_, { id, word }, { dataSources }) => {
+      return dataSources.wordsAPI.updateWord(id, word)
+    },
   },
 }
