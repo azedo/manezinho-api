@@ -13,10 +13,13 @@ export class WordsAPI extends DataSource {
     return words
   }
 
-  addWord(word) {
-    word.id = uuid()
-    words.push(word)
-    return word
+  addWord(newWord) {
+    if (words.filter(({ word }) => word === newWord.word).length > 0) {
+      return new Error('Word already exists')
+    }
+    newWord.id = uuid()
+    words.push(newWord)
+    return newWord
   }
 
   updateWord(id, updatedWord) {
