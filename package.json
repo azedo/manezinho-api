@@ -25,10 +25,10 @@
   },
   "homepage": "https://github.com/azedo/manezinho-api#readme",
   "dependencies": {
-    "apollo-datasource": "^3.3.2",
-    "apollo-server": "2.25.3",
+    "apollo-datasource": "3.3.2",
+    "apollo-server": "2.25.4",
     "graphql": "14.6.0",
-    "nodemon": "^2.0.20",
-    "uuid": "^9.0.0"
+    "nodemon": "2.0.20",
+    "uuid": "9.0.0"
   }
 }
